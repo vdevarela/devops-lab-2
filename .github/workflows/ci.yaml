@@ -48,8 +48,6 @@ jobs:
             path: |
                 test-results.txt
                 retention-days: 1
-      - name: Print Environment
-        run: echo "Running in ${{ github.event.inputs.environment }}"
 
   report:
     needs: test
@@ -78,4 +76,6 @@ jobs:
             echo "| $result | $version | ❌ Failed |" >> $GITHUB_STEP_SUMMARY
           fi
         done
-        done   
+        done
+    - name: Print Environment
+      run: echo "Running in ${{ github.event.inputs.environment }}"
